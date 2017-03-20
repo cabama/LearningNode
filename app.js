@@ -7,9 +7,15 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // var session = require('express-session'),
-
+var mongoose = require('mongoose');
+var config = require('./config/config.js');
 // Inicializamos express
 var app = express();
+
+// Base de datos.
+// Connect to DB
+var db = config.database;
+mongoose.connect(db);
 
 // Configuramos bodyParser y Cokies.
 app.use(bodyParser.json());
@@ -28,10 +34,10 @@ global.__base = __dirname + '/';
 app.set('view engine', 'ejs');
 
 // Configuramos la base de datos en fichero db.js
-var db = require('./db')
+// var db = require('./db')
 
 // Cargamos el fichero routers el cual dirigira segun URL.
-var routers = require('./routes/index.js');
+var routers = require('./routes/rt_index.js');
 app.use('/', routers);
 app.use(express.static(__dirname + '/public'));
 

@@ -1,6 +1,6 @@
 /**
  * Este fichero crear las rutas que cuelgan de /
- * Para cada elemento nuevo se puede mandar directamente a la vista, al controlador o 
+ * Para cada elemento nuevo se puede mandar directamente a la vista, al controlador o
  * a otro enrutador.
  */
 
@@ -24,7 +24,6 @@ router.get("/", function(solicitud, respuesta){
 	});
 });
 
-
 // Configuramos la ruta login
 router.get("/login/", function(solicitud, respuesta){
 	// res.send("Hola Mundo"); Para mandar un hola mundo
@@ -33,14 +32,23 @@ router.get("/login/", function(solicitud, respuesta){
 	});
 });
 
-
 // Respuesta al POST formulario de login.
 router.post("/login/", function (solicitud, respuesta) {
-
 	var login_controlador = new (require(__base + 'controllers/login'));
 	login_controlador.controlador(solicitud, respuesta);
 	console.log(solicitud.body);
+});
 
+router.get("/prueba", function (solicitud, respuesta){
+	console.log('Estamos en el get de la prueba');
+	var controller_prueba = new(require(__base + 'controllers/prueba'));
+	controller_prueba.controlador(solicitud, respuesta);
+});
+
+router.post("/prueba", function (solicitud, respuesta){
+	console.log('Estamos en el post de la prueba');
+	var controller_prueba = new(require(__base + 'controllers/prueba'));
+	controller_prueba.controlador_post(solicitud, respuesta);
 });
 
 module.exports = router;
