@@ -2,9 +2,10 @@
   "name": "test",
   "version": "0.0.1",
   "description": "Este es un proyecto de prueba de nodejs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "FuriaConquense",
   "license": "ISC",
@@ -15,5 +16,8 @@
     "express": "^4.14.0",
     "mongoose": "^4.9.0",
     "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

@@ -51,4 +51,22 @@ router.post("/prueba", function (solicitud, respuesta){
 	controller_prueba.controlador_post(solicitud, respuesta);
 });
 
+router.get("/ingreso", function (solicitud, respuesta){
+	console.log('Se encuentra en el ingreso de la clementina.');
+	var controller_prueba = new(require(__base + 'controllers/prueba'));
+	controller_prueba.controlador_clementina(solicitud, respuesta);
+});
+
+router.post("/ingreso", function (solicitud, respuesta){
+	console.log('Se encuentra en el post de la clementina.');
+	console.log(solicitud.body);
+	respuesta.end('En construccion.');
+});
+
+router.post("/jugadores", (req, res) => {
+	console.log('Se encuentra en el post de jugadores.');
+	var controladorJugadores = new(require(__controllers + 'ctrJugadores'));
+	controladorJugadores.nuevoJugador(req, res);
+});
+
 module.exports = router;

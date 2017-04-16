@@ -51,3 +51,11 @@ app.get("/", function (req, res){
 });
 
 app.listen(8080);
+```
+
+## Nodemon
+Librería para que cada vez que guardemos el fichero de node, no tener que estar apagando y encendiendo el servidor de forma manual. Esto se hará de forma automática.
+**Esta librería es solo para la hora de desasrrollar en servidor de pruebas.**
+```
+npm i -D nodemon
+```

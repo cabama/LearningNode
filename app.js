@@ -1,13 +1,14 @@
-/**
- *	Se trata del fichero principal o main de la aplicacion.
- */
+// Aprendiendo node.js
+// Fichero principal, se debe de arrancar con: node app.js
+// Recordar npm install, por si no tenemos alguna dependencia instalada.
+// Desarrollado por Carlos Barreiro Mata
 
 // Introducimos los modulos que vamos a emplear:
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-// var session = require('express-session'),
-var mongoose = require('mongoose');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
 var config = require('./config/config.js');
 // Inicializamos express
 var app = express();
@@ -21,20 +22,15 @@ mongoose.connect(db);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(session({
-//    secret: 'secret',
-//    resave: true,
-//    saveUninitialized: true
-//}));
 
 // Ruta base del proyecto para que se accesible a modulos internos.
-global.__base = __dirname + '/';
+global.__base         = __dirname + '/';
+global.__models       = __base + 'models/';
+global.__controllers  = __base + 'controllers/';
+global.__views        = __base + 'views/';
 
 // Ponemos como motor de vistas el framework EJS.
 app.set('view engine', 'ejs');
-
-// Configuramos la base de datos en fichero db.js
-// var db = require('./db')
 
 // Cargamos el fichero routers el cual dirigira segun URL.
 var routers = require('./routes/rt_index.js');
